@@ -13,10 +13,12 @@ class QuickSort:
 
     @staticmethod
     def sort_collection(collection):
-        pivot = len(collection)//2
+        pivot = collection[len(collection)//2]
         first_element = collection[0]
         last_element = collection[len(collection)-1]
 
+        # for element in range(collection[]):
+        #     pass
         print(pivot, first_element, last_element)
 
 
