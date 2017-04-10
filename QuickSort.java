@@ -4,9 +4,8 @@ import java.io.*;
 public class QuickSort {
 
   public static void main(String [] args) {
-    loadFile(args[0]);
-    System.out.println(loadFile(args[0]));
-
+    ArrayList<Integer> collection = loadFile(args[0]);
+    sortCollection(collection);
   }
 
   public static ArrayList<Integer> loadFile(String filename) {
@@ -27,4 +26,40 @@ public class QuickSort {
     }
   }
 
+  public static ArrayList<Integer> sortCollection(ArrayList<Integer> collection){
+    ArrayList<Integer> leftSide;
+    ArrayList<Integer> equal;
+    ArrayList<Integer> rightSide;
+    ArrayList<Integer> newCollection;
+    Integer pivot;
+    leftSide = new ArrayList();
+    equal = new ArrayList();
+    rightSide = new ArrayList();
+    pivot = collection.get(0);
+    newCollection = new ArrayList();
+
+    if(collection.size() > 1) {
+      for(Integer element : collection) {
+        if(element < pivot) {
+          leftSide.add(element);
+        }
+        else {
+          if(element > pivot) {
+            rightSide.add(element);
+          }
+          else {
+            equal.add(element);
+          }
+        }
+      }
+      System.out.println(sortCollection(leftSide));
+      newCollection.addAll(sortCollection(leftSide));
+      newCollection.addAll(equal);
+      newCollection.addAll(sortCollection(rightSide));
+      return sortCollection(newCollection);
+    }
+    else {
+      return collection;
+    }
+  }
 }
