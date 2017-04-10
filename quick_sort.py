@@ -7,4 +7,17 @@ class Data:
         return lines
 
 lista = Data.get_data(str(sys.argv[1]))
-print(lista)
+
+
+class QuickSort:
+
+    @staticmethod
+    def sort_collection(collection):
+        pivot = len(collection)//2
+        first_element = collection[0]
+        last_element = collection[len(collection)-1]
+
+        print(pivot, first_element, last_element)
+
+
+QuickSort.sort_collection(lista)
